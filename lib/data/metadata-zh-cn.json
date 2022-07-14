@@ -1,1 +1,1 @@
-[{"name":"guide","children":[],"localeName":"上手指南"},{"name":"components","children":[],"localeName":"所有组件"},{"name":"hooks","children":[]}]
+[{"name":"components","children":[{"name":"数据展示","children":[{"name":"头像 Avatar","url":"/zh-cn/components/button","index":100,"group":"数据展示"}]}],"localeName":"所有组件"}]

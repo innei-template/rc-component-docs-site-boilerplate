@@ -40,11 +40,7 @@ const nextConfig = {
         permanent: true,
         destination: '/en-us',
       },
-      {
-        source: '/icons',
-        permanent: true,
-        destination: '/en-us/@geist-ui/core/icons',
-      },
+
       {
         source: '/en-us/customization',
         destination: '/en-us',
