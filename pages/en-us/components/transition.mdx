@@ -1,0 +1,34 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { BottomUpTransitionView, FadeInOutTransitionView } from 'components/transition'
+
+export const meta = {
+  title: '过渡 Transition',
+  group: 'UX',
+}
+
+export const Demo = () => {
+  return (
+    <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+    </p>
+  )
+}
+
+## Button
+
+export default ({ children }) => (
+  <Layout meta={meta}>
+    {children}
+    <Playground
+      scope={{ BottomUpTransitionView, Demo }}
+      code={`<BottomUpTransitionView><Demo /></BottomUpTransitionView>`}
+      desc="Bottom to up transition view."
+    />
+    <Playground
+      scope={{ FadeInOutTransitionView, Demo }}
+      code={`<FadeInOutTransitionView><Demo /></FadeInOutTransitionView>`}
+      desc="Fade in transition view."
+    />
+  </Layout>
+)

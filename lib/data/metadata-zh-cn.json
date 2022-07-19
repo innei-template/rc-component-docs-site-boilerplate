@@ -1,1 +1,1 @@
-[{"name":"components","children":[{"name":"数据展示","children":[{"name":"头像 Avatar","url":"/zh-cn/components/button","index":100,"group":"数据展示"}]}],"localeName":"所有组件"}]
+[{"name":"components","children":[{"name":"UX","children":[{"name":"过渡 Transition","url":"/zh-cn/components/transition","index":100,"group":"UX"}]}],"localeName":"所有组件"}]
