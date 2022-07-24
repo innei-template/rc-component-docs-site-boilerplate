@@ -21,11 +21,13 @@ export default ({ children }) => (
   <Layout meta={meta}>
     {children}
     <Playground
+      replay
       scope={{ BottomUpTransitionView, Demo }}
       code={`<BottomUpTransitionView><Demo /></BottomUpTransitionView>`}
       desc="Bottom to up transition view."
     />
     <Playground
+      replay
       scope={{ FadeInOutTransitionView, Demo }}
       code={`<FadeInOutTransitionView><Demo /></FadeInOutTransitionView>`}
       desc="Fade in transition view."

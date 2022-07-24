@@ -20,6 +20,7 @@ export type PlaygroundProps = {
   scope: {
     [key: string]: any
   }
+  replay?: boolean
 }
 
 const defaultProps = {
@@ -34,6 +35,7 @@ const Playground: React.FC<PlaygroundProps> = React.memo(
     code: inputCode,
     desc,
     scope,
+    replay,
   }: PlaygroundProps & typeof defaultProps) => {
     const theme = useTheme()
     const { isChinese } = useConfigs()
@@ -44,7 +46,7 @@ const Playground: React.FC<PlaygroundProps> = React.memo(
       <>
         <Title title={title} desc={desc} />
         <div className="playground">
-          <DynamicLive code={code} scope={scope} />
+          <DynamicLive code={code} scope={scope} replay={replay} />
           <style jsx>{`
             .playground {
               width: 100%;
