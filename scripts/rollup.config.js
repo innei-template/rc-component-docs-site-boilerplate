@@ -1,8 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import localResolve from 'rollup-plugin-local-resolve'
-import babel from 'rollup-plugin-babel'
+import esbuild from 'rollup-plugin-esbuild'
 import fs from 'fs-extra'
+import pkg from '../package.json'
 import path from 'path'
 
 const root = path.join(__dirname, '../')
@@ -13,13 +14,19 @@ const esmPath = path.join(root, 'esm')
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
 const plugins = [
-  babel({
-    exclude: 'node_modules/**',
-    extensions,
-    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-    plugins: ['styled-jsx/babel'],
-    babelrc: false,
-    sourcemap: false,
+  esbuild({
+    include: /\.[jt]sx?$/,
+    exclude: /node_modules/,
+    sourceMap: false,
+    minify: process.env.NODE_ENV === 'production',
+    target: 'es2017',
+    jsxFactory: 'React.createElement',
+    jsxFragment: 'React.Fragment',
+    tsconfig: './tsconfig.json',
+    loaders: {
+      '.json': 'json',
+      '.js': 'jsx',
+    },
   }),
   localResolve(),
   nodeResolve({
@@ -34,18 +41,14 @@ const globals = {
   'react-dom': 'ReactDOM',
 }
 
-const external = id => /^react|react-dom|next\/link/.test(id)
+const external = Object.keys(pkg.dependencies)
 
 const cjsOutput = {
   format: 'cjs',
   exports: 'named',
   entryFileNames: '[name]/index.js',
   dir: distPath,
-  manualChunks: id => {
-    if (id.includes('node_modules/styled-jsx')) {
-      return 'styled-jsx.cjs'
-    }
-  },
+
   chunkFileNames: '[name].js',
   globals,
   sourcemap: false,
@@ -55,14 +58,7 @@ const esmOutput = {
   format: 'es',
   entryFileNames: '[name]/index.js',
   dir: esmPath,
-  manualChunks: id => {
-    if (id.includes('node_modules/styled-jsx/server')) {
-      return 'styled-jsx-server.es'
-    }
-    if (id.includes('node_modules/styled-jsx')) {
-      return 'styled-jsx.es'
-    }
-  },
+
   chunkFileNames: '[name].js',
   globals,
 }
@@ -112,6 +108,7 @@ export default (async () => {
         // },
         {
           ...cjsOutput,
+          ...esmOutput,
           entryFileNames: 'index.js',
         },
       ],

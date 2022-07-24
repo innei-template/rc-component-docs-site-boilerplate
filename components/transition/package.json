@@ -3,5 +3,8 @@
   "dependencies": {
     "css-spring": "^4.1.0",
     "react-transition-group": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/react-transition-group": "4.4.5"
   }
 }
