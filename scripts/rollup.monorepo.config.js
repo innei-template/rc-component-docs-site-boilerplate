@@ -6,10 +6,8 @@ import fs from 'fs-extra'
 import pkg from '../package.json'
 import path from 'path'
 
-const root = path.join(__dirname, '../')
-const componentsPath = path.join(root, 'components')
+const root = './'
 const distPath = path.join(root, 'dist')
-const esmPath = path.join(root, 'esm')
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
@@ -57,7 +55,7 @@ const cjsOutput = {
 const esmOutput = {
   format: 'es',
   entryFileNames: '[name]/index.js',
-  dir: esmPath,
+  dir: distPath,
 
   chunkFileNames: '[name].js',
   globals,
@@ -65,49 +63,18 @@ const esmOutput = {
 
 export default (async () => {
   await fs.remove(distPath)
-  await fs.remove(esmPath)
-  const files = await fs.readdir(componentsPath)
-
-  const components = await Promise.all(
-    files.map(async name => {
-      const unitPath = path.join(componentsPath, name)
-      const entry = path.join(unitPath, 'index.ts')
-
-      const stat = await fs.stat(unitPath)
-      if (!stat.isDirectory()) return null
-
-      const hasFile = await fs.pathExists(entry)
-      if (!hasFile) return null
-
-      return { name, url: entry }
-    }),
-  )
-  console.log(
-    `\n${Object.keys(components).length} components in total have been collected.`,
-  )
 
   return [
-    // Bundle each component separately
-    ...components
-      .filter(r => !!r)
-      .map(({ name, url }) => ({
-        input: { [name]: url },
-        // output: [esmOutput, cjsOutput],
-        output: [cjsOutput],
-        external,
-        plugins,
-      })),
-    // Bundle for packages containing all components.
     {
-      input: { index: path.join(componentsPath, 'index.ts') },
+      input: { index: 'index.ts' },
       output: [
+        {
+          ...cjsOutput,
+          entryFileNames: 'index.cjs.js',
+        },
         {
           ...esmOutput,
           entryFileNames: 'index.esm.js',
-        },
-        {
-          ...cjsOutput,
-          entryFileNames: 'index.js',
         },
       ],
       external,

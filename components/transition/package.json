@@ -1,5 +1,8 @@
 {
   "name": "@reactify-components/transition",
+  "scripts": {
+    "build": "rollup -c"
+  },
   "dependencies": {
     "css-spring": "^4.1.0",
     "react-transition-group": "^4.4.2"

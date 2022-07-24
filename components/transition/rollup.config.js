@@ -1,0 +1,1 @@
+../../scripts/rollup.monorepo.config.js
