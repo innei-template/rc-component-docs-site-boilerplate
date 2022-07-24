@@ -108,7 +108,7 @@ export default (async () => {
         // },
         {
           ...cjsOutput,
-          ...esmOutput,
+          // ...esmOutput,
           entryFileNames: 'index.js',
         },
       ],

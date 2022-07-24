@@ -1,1 +1,2 @@
-export * from './transition'
+import { BaseTransitionView } from './transition'
+export { BaseTransitionView }

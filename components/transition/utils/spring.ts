@@ -1,4 +1,4 @@
-import { isClientSide } from 'components/_internal/utils/env'
+import { isClientSide } from '../../_internal/utils/env'
 import spring, { toString } from 'css-spring'
 
 const cache = new Map<string, string>()
