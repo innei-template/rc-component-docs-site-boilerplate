@@ -20,7 +20,8 @@
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
     "build": "yarn build:clear && yarn build:rollup && yarn build:types",
-    "release": "yarn build && yarn publish --access public --non-interactive"
+    "release": "yarn build && yarn publish --access public --non-interactive",
+    "new:component": "node scripts/new-component.mjs"
   },
   "license": "MIT",
   "description": "Modern and minimalist React UI library.",
@@ -46,6 +47,7 @@
   ],
   "sideEffects": false,
   "devDependencies": {
+    "@geist-ui/core": "2.3.8",
     "@geist-ui/icons": "^1.0.1",
     "@geist-ui/prettier-config": "^1.0.1",
     "@mapbox/rehype-prism": "^0.6.0",
@@ -77,6 +79,7 @@
     "eslint-plugin-react": "^7.22.0",
     "extract-mdx-metadata": "^1.0.0",
     "fs-extra": "^10.0.0",
+    "inquirer": "^9.0.2",
     "jest": "^27.0.5",
     "next": "^12.0.9-canary.0",
     "prettier": "^2.3.1",
@@ -93,7 +96,7 @@
     "ttypescript": "^1.5.13",
     "typescript": "^4.5.4",
     "typescript-transform-paths": "^3.3.1",
-    "@geist-ui/core": "2.3.8"
+    "zx": "^7.0.7"
   },
   "dependencies": {
     "css-spring": "^4.1.0",
