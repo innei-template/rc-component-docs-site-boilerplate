@@ -37,3 +37,5 @@ examples/**/.cache
 
 # Local Netlify folder
 .netlify
+
+components/*/types

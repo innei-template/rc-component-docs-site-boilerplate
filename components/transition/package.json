@@ -1,7 +1,15 @@
 {
   "name": "@reactify-components/transition",
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "types",
+    "dist"
+  ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c && npm run type",
+    "type": "tsc -p tsconfig.types.json 2>/dev/null"
   },
   "dependencies": {
     "css-spring": "^4.1.0",

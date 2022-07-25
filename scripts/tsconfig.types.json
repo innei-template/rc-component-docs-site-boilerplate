@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "ES2017",
+    "module": "ES2020",
+    "strict": true,
+    "baseUrl": ".",
+    "outDir": "./types",
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "moduleResolution": "Node",
+    "rootDir": ".",
+    "declarationMap": false,
+    "isolatedModules": false,
+    "noEmit": false,
+    "allowJs": false,
+    "emitDeclarationOnly": true
+  }
+}
