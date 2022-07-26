@@ -1,3 +1,4 @@
+// @ts-check
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import localResolve from 'rollup-plugin-local-resolve'
@@ -36,12 +37,10 @@ const plugins = [
   commonjs(),
 ]
 
-const globals = {
-  react: 'React',
-  'react-dom': 'ReactDOM',
-}
-
-const external = Object.keys(pkg.dependencies)
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+]
 
 const cjsOutput = {
   format: 'cjs',
@@ -50,7 +49,7 @@ const cjsOutput = {
   dir: distPath,
 
   chunkFileNames: '[name].js',
-  globals,
+
   sourcemap: false,
 }
 
@@ -60,7 +59,6 @@ const esmOutput = {
   dir: esmPath,
 
   chunkFileNames: '[name].js',
-  globals,
 }
 
 export default (async () => {
