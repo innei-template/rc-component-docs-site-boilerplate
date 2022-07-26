@@ -1,4 +1,4 @@
 import { BottomUpTransitionView } from '@reactify-components/transition'
-import { createElement } from 'react'
+import { createElement, FC } from 'react'
 
-export const Overlay = () => createElement(BottomUpTransitionView, {}, 'Overlay')
+export const Overlay: FC = () => createElement(BottomUpTransitionView, {}, 'Overlay')
