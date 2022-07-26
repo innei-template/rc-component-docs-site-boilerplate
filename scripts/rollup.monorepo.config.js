@@ -34,12 +34,7 @@ const plugins = [
   commonjs(),
 ]
 
-const globals = {
-  react: 'React',
-  'react-dom': 'ReactDOM',
-}
-
-const external = Object.keys(pkg.dependencies)
+const external = [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)]
 
 const cjsOutput = {
   format: 'cjs',
@@ -48,7 +43,6 @@ const cjsOutput = {
   dir: distPath,
 
   chunkFileNames: '[name].js',
-  globals,
   sourcemap: false,
 }
 
@@ -58,7 +52,6 @@ const esmOutput = {
   dir: distPath,
 
   chunkFileNames: '[name].js',
-  globals,
 }
 
 export default (async () => {
