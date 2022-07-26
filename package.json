@@ -19,6 +19,7 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
+    "build:monorepo": "pnpm run -r build",
     "build": "yarn build:clear && yarn build:rollup && yarn build:types",
     "release": "yarn build && yarn publish --access public --non-interactive",
     "new:component": "node scripts/new-component.mjs"
@@ -63,6 +64,7 @@
     "@testing-library/user-event": "^13.2.0",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.182",
     "@types/node": "^18.0.6",
     "@types/react": "^17.0.38",
     "@types/react-color": "^3.0.4",
@@ -81,6 +83,7 @@
     "fs-extra": "^10.0.0",
     "inquirer": "^9.0.2",
     "jest": "^27.0.5",
+    "lodash": "^4.17.21",
     "next": "^12.0.9-canary.0",
     "prettier": "^2.3.1",
     "react": "^17.0.2",
@@ -97,10 +100,6 @@
     "typescript": "^4.5.4",
     "typescript-transform-paths": "^3.3.1",
     "zx": "^7.0.7"
-  },
-  "dependencies": {
-    "css-spring": "^4.1.0",
-    "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
     "react": ">=16.9.0",

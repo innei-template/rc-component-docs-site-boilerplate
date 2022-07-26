@@ -20,6 +20,7 @@ importers:
       '@testing-library/user-event': ^13.2.0
       '@types/enzyme': ^3.10.8
       '@types/jest': ^26.0.23
+      '@types/lodash': ^4.14.182
       '@types/node': ^18.0.6
       '@types/react': ^17.0.38
       '@types/react-color': ^3.0.4
@@ -28,7 +29,6 @@ importers:
       '@typescript-eslint/parser': ^4.27.0
       '@wojtekmaj/enzyme-adapter-react-17': ^0.6.2
       css-mediaquery: ^0.1.2
-      css-spring: ^4.1.0
       enzyme: ^3.11.0
       esbuild: 0.14.49
       eslint: ^7.29.0
@@ -39,13 +39,13 @@ importers:
       fs-extra: ^10.0.0
       inquirer: ^9.0.2
       jest: ^27.0.5
+      lodash: ^4.17.21
       next: ^12.0.9-canary.0
       prettier: ^2.3.1
       react: ^17.0.2
       react-color: ^2.19.3
       react-dom: ^17.0.2
       react-live: ^2.2.3
-      react-transition-group: ^4.4.2
       rehype-join-line: ^1.0.2
       rollup: ^2.64.0
       rollup-plugin-esbuild: 4.9.1
@@ -56,9 +56,6 @@ importers:
       typescript: ^4.5.4
       typescript-transform-paths: ^3.3.1
       zx: ^7.0.7
-    dependencies:
-      css-spring: 4.1.0
-      react-transition-group: 4.4.2_sfoxds7t5ydpegc3knd667wn6m
     devDependencies:
       '@geist-ui/core': 2.3.8_sfoxds7t5ydpegc3knd667wn6m
       '@geist-ui/icons': 1.0.2_jrlnkncx7ikc34zmqklak5beq4
@@ -76,6 +73,7 @@ importers:
       '@testing-library/user-event': 13.5.0_gwcpuyfvwbszhlmedmugzivgzu
       '@types/enzyme': 3.10.12
       '@types/jest': 26.0.24
+      '@types/lodash': 4.14.182
       '@types/node': 18.0.6
       '@types/react': 17.0.47
       '@types/react-color': 3.0.6
@@ -94,6 +92,7 @@ importers:
       fs-extra: 10.1.0
       inquirer: 9.0.2
       jest: 27.5.1
+      lodash: 4.17.21
       next: 12.2.2_sfoxds7t5ydpegc3knd667wn6m
       prettier: 2.7.1
       react: 17.0.2
@@ -1456,6 +1455,10 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -5525,6 +5528,7 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
+    dev: true
 
   /react-error-boundary/3.1.4_react@17.0.2:
     resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
@@ -5606,26 +5610,13 @@ packages:
       prop-types: 15.8.1
     dev: false
 
-  /react-transition-group/4.4.2_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==}
-    peerDependencies:
-      react: '>=16.6.0'
-      react-dom: '>=16.6.0'
-    dependencies:
-      '@babel/runtime': 7.18.6
-      dom-helpers: 5.2.1
-      loose-envify: 1.4.0
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: false
-
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
+    dev: true
 
   /reactcss/1.2.3_react@17.0.2:
     resolution: {integrity: sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==}
@@ -5953,6 +5944,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
+    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}

@@ -3,9 +3,9 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import localResolve from 'rollup-plugin-local-resolve'
 import esbuild from 'rollup-plugin-esbuild'
 import fs from 'fs-extra'
-import pkg from '../package.json'
+import { merge } from 'lodash'
 import path from 'path'
-
+import pkg from '../package.json'
 const root = './'
 const distPath = path.join(root, 'dist')
 
@@ -34,7 +34,10 @@ const plugins = [
   commonjs(),
 ]
 
-const external = [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)]
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+]
 
 const cjsOutput = {
   format: 'cjs',
@@ -54,10 +57,10 @@ const esmOutput = {
   chunkFileNames: '[name].js',
 }
 
-export default (async () => {
+export default async config => {
   await fs.remove(distPath)
 
-  return [
+  return merge(
     {
       input: { index: 'index.ts' },
       output: [
@@ -73,5 +76,6 @@ export default (async () => {
       external,
       plugins,
     },
-  ]
-})()
+    config,
+  )
+}

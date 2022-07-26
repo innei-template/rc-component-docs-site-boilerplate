@@ -52,7 +52,27 @@ inquirer
       'file',
       () => {},
     )
-    symlink('../../scripts/rollup.config.js', './rollup.config.js', 'file', () => {})
+
+    // create rollup config
+    writeFileSync(
+      resolve(componentDir, component, 'rollup.config.js'),
+
+      `import { readJSONSync } from 'fs-extra'
+import createConfig from '../../scripts/rollup.monorepo.config'
+const pkg = readJSONSync('./package.json')
+
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+  'react',
+  'react-dom',
+]
+
+export default createConfig({
+  external,
+})
+`,
+    )
 
     // create entry file
     writeFileSync(resolve(componentDir, component, 'index.ts'), 'export {}')
