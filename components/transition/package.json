@@ -9,8 +9,11 @@
     "dist"
   ],
   "scripts": {
+    "prebuild": "rm -rf ./dist && rm -rf ./types",
     "build": "rollup -c && npm run type",
-    "type": "tsc -p tsconfig.types.json 2>/dev/null"
+    "type": "tsc -p tsconfig.types.json 2>/dev/null || exit 0",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "css-spring": "^4.1.0",

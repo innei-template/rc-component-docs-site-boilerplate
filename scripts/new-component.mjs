@@ -34,8 +34,11 @@ inquirer
           types: 'types/index.d.ts',
           files: ['types', 'dist'],
           scripts: {
+            prebuild: 'rm -rf ./dist && rm -rf ./types',
             build: 'rollup -c && npm run type',
-            type: 'tsc -p tsconfig.types.json 2>/dev/null',
+            type: 'tsc -p tsconfig.types.json 2>/dev/null || exit 0',
+            prepublish: 'npm run build',
+            publish: 'npm publish --access public || exit 0',
           },
           dependencies: {},
           devDependencies: {},
