@@ -15,11 +15,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
       - name: install
-        run: npm run install --check-files --frozen-lockfile
+        run: pnpm install
       - name: lint
-        run: npm run lint
+        run: pnpm run lint
       - name: build
-        run: npm run build && npm run build:monorepo
+        run: pnpm run build && pnpm run build:monorepo
 
  
