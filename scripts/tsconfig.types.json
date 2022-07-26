@@ -12,7 +12,7 @@
     "jsx": "preserve",
     "composite": true,
     "moduleResolution": "Node",
-    "rootDir": ".",
+    // "rootDir": ".",
     "declarationMap": false,
     "isolatedModules": false,
     "noEmit": false,

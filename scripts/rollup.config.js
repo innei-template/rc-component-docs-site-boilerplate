@@ -6,7 +6,7 @@ import esbuild from 'rollup-plugin-esbuild'
 import fs from 'fs-extra'
 import pkg from '../package.json'
 import path from 'path'
-
+import css from 'rollup-plugin-postcss'
 const root = path.join(__dirname, '../')
 const componentsPath = path.join(root, 'components')
 const distPath = path.join(root, 'dist')
@@ -35,6 +35,7 @@ const plugins = [
     extensions,
   }),
   commonjs(),
+  css(),
 ]
 
 const external = [

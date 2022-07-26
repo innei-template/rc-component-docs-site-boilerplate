@@ -1,5 +1,5 @@
 // @ts-check
-import { existsSync, mkdirSync, symlink, writeFileSync } from 'fs'
+import { existsSync, mkdirSync, symlinkSync, writeFileSync } from 'fs'
 import inquirer from 'inquirer'
 import { resolve } from 'path'
 import { chdir } from 'process'
@@ -36,7 +36,7 @@ inquirer
           scripts: {
             prebuild: 'rm -rf ./dist && rm -rf ./types',
             build: 'rollup -c && npm run type',
-            type: 'tsc --build tsconfig.types.json || exit 0',
+            type: 'dts-bundle-generator -o types/index.d.ts index.ts --project tsconfig.types.json || exit 0',
             prepublish: 'npm run build',
             publish: 'npm publish --access public || exit 0',
           },
@@ -53,12 +53,9 @@ inquirer
     )
     // create symbol link
     chdir(resolve(componentDir, component))
-    symlink(
-      '../../scripts/tsconfig.types.json',
-      './tsconfig.types.json',
-      'file',
-      () => {},
-    )
+    symlinkSync('../../scripts/tsconfig.types.json', './tsconfig.types.json', 'file')
+    symlinkSync('../../scripts/postcss.config.js', './postcss.config.js', 'file')
+    symlinkSync('../../scripts/tailwind.config.js', './tailwind.config.js', 'file')
 
     // create rollup config
     writeFileSync(

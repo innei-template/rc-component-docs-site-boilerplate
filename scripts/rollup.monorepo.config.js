@@ -2,6 +2,8 @@ import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import localResolve from 'rollup-plugin-local-resolve'
 import esbuild from 'rollup-plugin-esbuild'
+import css from 'rollup-plugin-postcss'
+
 import fs from 'fs-extra'
 import { merge } from 'lodash'
 import path from 'path'
@@ -32,6 +34,7 @@ const plugins = [
     extensions,
   }),
   commonjs(),
+  css(),
 ]
 
 const external = [

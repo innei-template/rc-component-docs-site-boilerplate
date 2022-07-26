@@ -1,0 +1,30 @@
+.container {
+  z-index: 61;
+  inset: 0;
+  position: fixed;
+}
+
+.container.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container .overlay {
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  right: -20px;
+  left: -20px;
+  z-index: -1;
+  background-color: #00000030;
+}
+
+.overlay {
+  @apply z-[99] fixed inset-0 flex;
+}
+
+.overlay.center {
+  @apply items-center justify-center;
+}

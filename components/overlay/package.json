@@ -11,7 +11,7 @@
   "scripts": {
     "prebuild": "rm -rf ./dist && rm -rf ./types",
     "build": "rollup -c && npm run type",
-    "type": "tsc --build tsconfig.types.json || exit 0",
+    "type": "dts-bundle-generator -o types/index.d.ts index.ts --project tsconfig.types.json || exit 0",
     "prepublish": "npm run build",
     "publish": "npm publish --access public || exit 0"
   },
@@ -22,5 +22,7 @@
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "clsx": "1.2.1"
+  }
 }
