@@ -39,3 +39,5 @@ examples/**/.cache
 .netlify
 
 components/*/types
+
+**/node_modules
