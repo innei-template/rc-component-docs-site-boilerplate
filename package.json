@@ -19,10 +19,11 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
-    "build:monorepo": "pnpm run -r build",
+    "build:monorepo": "turbo run build",
     "build": "yarn build:clear && yarn build:rollup && yarn build:types",
     "release": "yarn build && yarn publish --access public --non-interactive",
-    "new:component": "node scripts/new-component.mjs"
+    "new:component": "node scripts/new-component.mjs",
+    "postinstall": "npm run build:monorepo"
   },
   "license": "MIT",
   "description": "Modern and minimalist React UI library.",
@@ -97,6 +98,7 @@
     "styled-jsx": "4.0.1",
     "ts-jest": "^27.0.3",
     "ttypescript": "^1.5.13",
+    "turbo": "^1.3.4",
     "typescript": "^4.5.4",
     "typescript-transform-paths": "^3.3.1",
     "zx": "^7.0.7"

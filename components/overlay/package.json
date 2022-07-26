@@ -1,0 +1,26 @@
+{
+  "name": "@reactify-components/overlay",
+  "version": "0.1.0",
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "types",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf ./dist && rm -rf ./types",
+    "build": "rollup -c && npm run type",
+    "type": "tsc -p tsconfig.types.json 2>/dev/null || exit 0",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public || exit 0"
+  },
+  "dependencies": {
+    "@reactify-components/transition": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "devDependencies": {}
+}

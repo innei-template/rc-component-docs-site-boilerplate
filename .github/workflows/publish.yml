@@ -1,8 +1,10 @@
-name: Publish
+name: Build
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
   build:
@@ -12,42 +14,12 @@ jobs:
       - name: checkout
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
       - name: install
-        run: yarn install --check-files --frozen-lockfile
+        run: npm run install --check-files --frozen-lockfile
       - name: lint
-        run: yarn lint
-      - name: lint
-        run: yarn test
+        run: npm run lint
       - name: build
-        run: yarn build
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: checkout
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - name: install
-        run: yarn install --check-files --frozen-lockfile
-      - name: set dist-tag
-        run: |
-          case "${{github.event.release.name}}" in
-          *"rc"* | *"canary"*)
-           echo "r_tag=canary" >> $GITHUB_ENV;;
-          *"dev"*)
-           echo "r_tag=dev" >> $GITHUB_ENV;;
-          *"beta"*)
-           echo "r_tag=beta" >> $GITHUB_ENV;;
-          *)
-           echo "r_tag=latest" >> $GITHUB_ENV;;
-          esac
-      - name: publish
-        run: |
-          echo ">> dist-tag: ${{ env.r_tag }}"
-          yarn release --tag ${{ env.r_tag }}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        run: npm run build && npm run build:monorepo
+
+ 

@@ -42,6 +42,10 @@ inquirer
           },
           dependencies: {},
           devDependencies: {},
+          peerDependencies: {
+            react: '>=17',
+            'react-dom': '>=17',
+          },
         },
         null,
         2,
