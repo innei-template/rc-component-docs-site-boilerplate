@@ -28,6 +28,7 @@ inquirer
       JSON.stringify(
         {
           name: '@reactify-components/' + component,
+          version: '0.1.0',
           main: 'dist/index.cjs',
           module: 'dist/index.esm.js',
           types: 'types/index.d.ts',
