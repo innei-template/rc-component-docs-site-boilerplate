@@ -45,7 +45,8 @@
   ],
   "files": [
     "/dist",
-    "/esm"
+    "/esm",
+    "/components"
   ],
   "sideEffects": false,
   "devDependencies": {
@@ -112,5 +113,9 @@
   "peerDependencies": {
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
+  },
+  "dependencies": {
+    "css-spring": "^4.1.0",
+    "react-transition-group": "^4.4.2"
   }
 }
