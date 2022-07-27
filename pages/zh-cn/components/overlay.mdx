@@ -1,0 +1,43 @@
+import { Layout, Playground, Attributes } from 'lib/components'
+import { Overlay } from 'components/overlay'
+import { Button } from '@geist-ui/core'
+
+export const meta = {
+  title: '遮罩 Overlay',
+  group: 'UX',
+}
+
+## Overlay
+
+export default ({ children }) => (
+  <Layout meta={meta}>
+    {children}
+    <Playground
+      replay
+      scope={{ Overlay, Button }}
+      code={`
+    () => {
+    const [show, setShow] = React.useState(false)
+    return <>
+      <Button
+        onClick={() => {
+          setShow(true)
+        }}>
+        Open
+      </Button>
+      <Overlay
+        center
+        show={show}
+        darkness={0.8}
+        zIndex={1090}
+        onClose={() => {
+          setShow(false)
+        }}>
+        Overlay
+      </Overlay>
+    </>
+    }`.trim()}
+      desc="Basic Overlay"
+    />
+  </Layout>
+)

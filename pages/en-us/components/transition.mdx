@@ -1,36 +1,81 @@
 import { Layout, Playground, Attributes } from 'lib/components'
-import { BottomUpTransitionView, FadeInOutTransitionView } from 'components/transition'
+import {
+  BottomUpTransitionView,
+  LeftRightTransitionView,
+  RightLeftTransitionView,
+  ScaleTransitionView,
+  FadeInOutTransitionView,
+} from 'components/transition'
 
 export const meta = {
   title: '过渡 Transition',
   group: 'UX',
 }
 
-export const Demo = () => {
-  return (
-    <p>
-      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
-      fugiat et. Quis et omnis non autem exercitationem.
-    </p>
-  )
-}
-
-## Button
+## Transition
 
 export default ({ children }) => (
   <Layout meta={meta}>
     {children}
     <Playground
       replay
-      scope={{ BottomUpTransitionView, Demo }}
-      code={`<BottomUpTransitionView><Demo /></BottomUpTransitionView>`}
+      scope={{ BottomUpTransitionView }}
+      code={`
+    <BottomUpTransitionView>
+      <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+      </p>
+    </BottomUpTransitionView>`.trim()}
       desc="Bottom to up transition view."
     />
     <Playground
       replay
-      scope={{ FadeInOutTransitionView, Demo }}
-      code={`<FadeInOutTransitionView><Demo /></FadeInOutTransitionView>`}
+      scope={{ FadeInOutTransitionView }}
+      code={`
+    <FadeInOutTransitionView>
+      <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+      </p>
+    </FadeInOutTransitionView>`}
       desc="Fade in transition view."
+    />
+    <Playground
+      replay
+      scope={{ LeftRightTransitionView }}
+      code={`
+    <LeftRightTransitionView>
+      <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+      </p>
+    </LeftRightTransitionView>`}
+      desc="Left to right transition view."
+    />
+    <Playground
+      replay
+      scope={{ RightLeftTransitionView }}
+      code={`
+    <RightLeftTransitionView>
+      <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+      </p>
+    </RightLeftTransitionView>`}
+      desc="Right to left transition view."
+    />
+    <Playground
+      replay
+      scope={{ ScaleTransitionView }}
+      code={`
+    <ScaleTransitionView>
+      <p>
+      Laboriosam dolor ut molestias assumenda est tempore sunt. Voluptas maiores dolores
+      fugiat et. Quis et omnis non autem exercitationem.
+      </p>
+    </ScaleTransitionView>`}
+      desc="Scale transition view."
     />
   </Layout>
 )
