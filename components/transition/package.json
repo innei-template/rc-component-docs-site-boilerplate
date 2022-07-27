@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "prebuild": "rm -rf ./dist && rm -rf ./types",
-    "build": "rollup -c && npm run type",
+    "build": "rollup -c",
     "type": "dts-bundle-generator -o types/index.d.ts index.ts --project tsconfig.types.json || exit 0",
-    "prepublish": "npm run build",
+    "prepublish": "npm run build && npm run type",
     "publish": "npm publish --access public"
   },
   "dependencies": {

@@ -10,13 +10,20 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "jsx": "preserve",
-    "composite": true,
     "moduleResolution": "Node",
-    // "rootDir": ".",
     "declarationMap": false,
     "isolatedModules": false,
     "noEmit": false,
     "allowJs": false,
-    "emitDeclarationOnly": true
-  }
+    "emitDeclarationOnly": true,
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+  ],
+  "exclude": [
+    "dist",
+    "types",
+    "node_modules",
+  ]
 }

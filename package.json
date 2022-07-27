@@ -19,7 +19,7 @@
     "build:clear": "rm -rf ./dist ./esm",
     "build:rollup": "rollup -c scripts/rollup.config.js",
     "build:types": "ttsc -p ./scripts & ttsc -p ./scripts --outDir ./esm",
-    "build:monorepo": "turbo run build",
+    "build:monorepo": "turbo run build type",
     "build": "yarn build:clear && yarn build:rollup && yarn build:types",
     "release": "yarn build && yarn publish --access public --non-interactive",
     "new:component": "node scripts/new-component.mjs",

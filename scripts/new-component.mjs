@@ -35,10 +35,11 @@ inquirer
           files: ['types', 'dist'],
           scripts: {
             prebuild: 'rm -rf ./dist && rm -rf ./types',
-            build: 'rollup -c && npm run type',
+            build: 'rollup -c',
             type: 'dts-bundle-generator -o types/index.d.ts index.ts --project tsconfig.types.json || exit 0',
-            prepublish: 'npm run build',
-            publish: 'npm publish --access public || exit 0',
+            package: 'npm run build && npm run type',
+            prepublish: 'npm run package',
+            publish: 'npm publish --access public',
           },
           dependencies: {},
           devDependencies: {},
@@ -56,7 +57,7 @@ inquirer
     symlinkSync('../../scripts/tsconfig.types.json', './tsconfig.types.json', 'file')
     symlinkSync('../../scripts/postcss.config.js', './postcss.config.js', 'file')
     symlinkSync('../../scripts/tailwind.config.js', './tailwind.config.js', 'file')
-
+    symlinkSync('../global.d.ts', './global.d.ts', 'file')
     // create rollup config
     writeFileSync(
       resolve(componentDir, component, 'rollup.config.js'),
@@ -79,7 +80,10 @@ export default createConfig({
     )
 
     // create entry file
-    writeFileSync(resolve(componentDir, component, 'index.ts'), 'export {}')
+    writeFileSync(
+      resolve(componentDir, component, 'index.ts'),
+      '/// <reference path="./global.d.ts" />' + '\n' + 'export {}',
+    )
 
     // run pnpm install
     await $`pnpm install -r`

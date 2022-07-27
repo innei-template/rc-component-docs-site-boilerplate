@@ -8,6 +8,7 @@ import { stopEventDefault } from '../_internal/utils/dom'
 
 import { RootPortal } from '../_internal/components/portal'
 import { FadeInOutTransitionView } from '@reactify-components/transition'
+
 import styles from './overlay.module.css'
 import React from 'react'
 import { isUndefined, merge } from '../_internal/utils/_'
