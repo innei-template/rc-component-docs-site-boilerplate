@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useTheme, useToasts, Code, Grid, useClipboard } from '@geist-ui/core'
 import { getColorData, getCurrentColor } from './colors-data'
-import { GeistUIThemesPalette } from '@geist-ui/core/themes'
+import { GeistUIThemesPalette } from '@geist-ui/core/dist/themes'
 
 interface Props {
   type: string

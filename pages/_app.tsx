@@ -1,7 +1,6 @@
 import App from 'lib/app'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
 const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {

@@ -4,7 +4,10 @@ import EditorColorItem from './editor-color-item'
 import EditorInputItem from './editor-input-item'
 import RotateCcwIcon from '@geist-ui/icons/rotateCcw'
 import { useConfigs } from 'lib/config-context'
-import { GeistUIThemesExpressiveness, GeistUIThemesPalette } from '@geist-ui/core/themes'
+import {
+  GeistUIThemesExpressiveness,
+  GeistUIThemesPalette,
+} from '@geist-ui/core/dist/themes'
 
 const basicColors: Array<keyof GeistUIThemesPalette> = [
   'accents_1',

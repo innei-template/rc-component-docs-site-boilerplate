@@ -1,4 +1,4 @@
-import { GeistUIThemesPalette } from '@geist-ui/core/themes/presets'
+import { GeistUIThemesPalette } from '@geist-ui/core/dist/themes/presets'
 
 export type ColorEnum = {
   [key in keyof GeistUIThemesPalette]?: string

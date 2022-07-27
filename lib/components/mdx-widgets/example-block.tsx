@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import useTheme from 'node_modules/@geist-ui/core/esm/use-theme'
-import { GeistUIThemes } from '@geist-ui/core/themes/presets'
+import { GeistUIThemes } from '@geist-ui/core/dist/themes/presets'
 
 const defaultProps = {
   plain: false,

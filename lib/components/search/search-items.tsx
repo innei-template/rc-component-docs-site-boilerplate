@@ -35,10 +35,13 @@ const SearchItems = React.forwardRef<
     const { rect, setRect } = useRect()
     const ref = useRef<HTMLUListElement | null>(null)
     const [displayHighlight, setDisplayHighlight] = useState<boolean>(false)
-    useImperativeHandle(outRef, () =>
-      Object.assign(ref.current, {
-        closeHighlight: () => setDisplayHighlight(false),
-      }),
+    useImperativeHandle(
+      outRef,
+      () =>
+        ref.current &&
+        Object.assign(ref.current, {
+          closeHighlight: () => setDisplayHighlight(false),
+        }),
     )
 
     const hoverHandler = (event: MouseEvent<HTMLButtonElement>) => {

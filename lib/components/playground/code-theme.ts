@@ -1,5 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer'
-import { GeistUIThemes } from '@geist-ui/core/themes/presets'
+import { GeistUIThemes } from '@geist-ui/core/dist/themes/presets'
 
 const makeCodeTheme = (theme: GeistUIThemes): PrismTheme => ({
   plain: {

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { useTheme, Popover, Themes } from '@geist-ui/core'
 import { ColorResult, TwitterPicker } from 'react-color'
 import { useConfigs } from 'lib/config-context'
-import { GeistUIThemesPalette } from '@geist-ui/core/themes'
+import { GeistUIThemesPalette } from '@geist-ui/core/dist/themes'
 const DefaultTheme = Themes.getPresetStaticTheme()
 
 interface Props {

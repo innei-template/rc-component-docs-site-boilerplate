@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
-import { isObject } from '@geist-ui/core/themes/themes'
+
 import { LiveEditor, LiveProvider } from 'react-live'
 import { useConfigs } from 'lib/config-context'
 import { CUSTOM_THEME_TYPE } from 'lib/constants'
-import CopyIcon from '@geist-ui/core/snippet/snippet-icon'
+import CopyIcon from '@geist-ui/icons/copy'
 import makeCodeTheme from 'lib/components/playground/code-theme'
 import {
   Text,
@@ -14,8 +14,9 @@ import {
   Themes,
   useClipboard,
 } from '@geist-ui/core'
+import isObject from 'lodash/isObject'
 
-export const getDeepDifferents = <T,>(source: T, target: T): T => {
+export const getDeepDifferent = <T,>(source: T, target: T): T => {
   if (!isObject(target) || !isObject(source)) return target
 
   const sourceKeys = Object.keys(source) as Array<keyof T>
@@ -25,7 +26,7 @@ export const getDeepDifferents = <T,>(source: T, target: T): T => {
     const targetValue = target[key]
 
     if (isObject(sourceValue) && isObject(targetValue)) {
-      const childrenDiff = getDeepDifferents(sourceValue, { ...targetValue })
+      const childrenDiff = getDeepDifferent(sourceValue, { ...targetValue })
       if (Object.keys(childrenDiff).length !== 0) {
         result[key] = childrenDiff
       }
@@ -46,7 +47,7 @@ const CustomizationCodes: React.FC<unknown> = () => {
 
   const deepDifferents = useMemo(
     () => ({
-      ...getDeepDifferents(DefaultTheme, theme),
+      ...getDeepDifferent(DefaultTheme, theme),
       type: CUSTOM_THEME_TYPE,
     }),
     [DefaultTheme, theme],
